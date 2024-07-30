@@ -1,0 +1,30 @@
+name: Test AKS Runner
+
+on:
+  workflow_dispatch:  # This allows manual triggering of the workflow
+
+jobs:
+  test-runner:
+    runs-on: ubuntu-20-04-16g  # This should match your runner label
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run a simple command
+        run: |
+          echo "Hello from AKS runner!"
+          echo "Runner name: ${{ runner.name }}"
+          echo "Runner OS: ${{ runner.os }}"
+          echo "GitHub Workspace: ${{ github.workspace }}"
+
+      - name: Check for required tools
+        run: |
+          echo "Checking for required tools..."
+          docker --version
+          kubectl version --client
+          helm version --short
+
+      - name: List files in workspace
+        run: |
+          echo "Listing files in workspace:"
+          ls -R
