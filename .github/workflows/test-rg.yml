@@ -1,0 +1,11 @@
+name: Test Runner Group
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: [runner-group:default]
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World!"
