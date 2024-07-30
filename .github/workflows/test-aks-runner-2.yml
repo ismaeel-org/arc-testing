@@ -5,7 +5,7 @@ on:
 
 jobs:
   test-runner:
-    runs-on: ubuntu-20-04-16g  # This should match your runner label
+    runs-on: aks-pod-runner  # This should match your runner label
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -17,14 +17,14 @@ jobs:
           echo "Runner OS: ${{ runner.os }}"
           echo "GitHub Workspace: ${{ github.workspace }}"
 
-      - name: Check for required tools
-        run: |
-          echo "Checking for required tools..."
-          docker --version
-          kubectl version --client
-          helm version --short
+      # - name: Check for required tools
+      #   run: |
+      #     echo "Checking for required tools..."
+      #     docker --version
+      #     kubectl version --client
+      #     helm version --short
 
-      - name: List files in workspace
-        run: |
-          echo "Listing files in workspace:"
-          ls -R
+      # - name: List files in workspace
+      #   run: |
+      #     echo "Listing files in workspace:"
+      #     ls -R
