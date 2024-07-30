@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    runs-on: [runner-group:default]
+    runs-on: runner-group/default
     steps:
       - name: Print Hello World
         run: echo "Hello World!"
